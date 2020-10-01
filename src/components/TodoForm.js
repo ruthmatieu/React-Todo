@@ -3,9 +3,16 @@ import React, { Component } from 'react';
 class TodoForm extends Component {
     render() {
         return (
-            <div>
-
-            </div>
+            <form>
+                <label>
+                    <input
+                        type="text"
+                        name="item"
+                        placeholder="...enter an item."
+                    />
+                </label>
+                <button>Submit</button>
+            </form>
         )
     }
 };

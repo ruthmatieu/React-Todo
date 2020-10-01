@@ -1,4 +1,39 @@
 import React, { Component } from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+
+const todos = [
+  {
+    task: 'Organize Garage',
+    id: Date.now(),
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: Date.now(),
+    completed: false
+  },
+  {
+    task: 'Walk Kippy',
+    id: Date.now(),
+    completed: false
+  },
+  {
+    task: '15 Min Workout',
+    id: Date.now(),
+    completed: false
+  },
+  {
+    task: 'Laundry',
+    id: Date.now(),
+    completed: false
+  },
+  {
+    task: 'Complete work project',
+    id: Date.now(),
+    completed: false
+  }
+]
 
 class App extends Component {
   // you will need a place to store your state in this component.
@@ -13,13 +48,15 @@ class App extends Component {
     super(); //this is what gives up access to properties
     //initialize state obj
     this.state = {
-      
+      todos
     }
   }
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        <TodoForm/>
+        <TodoList todoList={this.state.todos}/>
       </div>
     );
   }

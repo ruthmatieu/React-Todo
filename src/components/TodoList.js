@@ -1,15 +1,16 @@
 // your components will all go in this `component` directory.
 
-import React, { Component } from 'react';
+import React from 'react';
+import Todo from './Todo';
 
-class TodoList extends Component {
-    render() {
-        return (
-            <div>
-
-            </div>
-        )
-    }
+function TodoList(props) {
+    return (
+        <div>
+            {props.todoList.map(item => (
+                // <Todo key={item.id} item={item}/>
+            ))}
+        </div>
+    ) 
 };
 
 export default TodoList;
