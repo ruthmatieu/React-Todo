@@ -5,32 +5,32 @@ import TodoList from './components/TodoList';
 const todos = [
   {
     task: 'Organize Garage',
-    id: Date.now(),
+    id: 1,
     completed: false
   },
   {
     task: 'Bake Cookies',
-    id: Date.now(),
+    id: 2,
     completed: false
   },
   {
     task: 'Walk Kippy',
-    id: Date.now(),
+    id: 3,
     completed: false
   },
   {
     task: '15 Min Workout',
-    id: Date.now(),
+    id: 4,
     completed: false
   },
   {
     task: 'Laundry',
-    id: Date.now(),
+    id: 5,
     completed: false
   },
   {
     task: 'Complete work project',
-    id: Date.now(),
+    id: 6,
     completed: false
   }
 ]
@@ -51,12 +51,50 @@ class App extends Component {
       todos
     }
   }
+
+  addItem = (item) => {
+    const newItem = {
+      task: item,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newItem ]
+    })
+  }
+
+  toggleItem = itemId => {
+    this.setState({
+      todos: this.state.todos.map(item => {
+        if (itemId === item.id) {
+          return {
+            ...item,
+            completed: !item.completed
+          }
+        }
+        return item
+      })
+    })
+  }
+
+  clearCompleted = event => {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(item => !item.completed)
+    })
+  }
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoForm/>
-        <TodoList todoList={this.state.todos}/>
+        <h2>Tudu App</h2>
+        <TodoForm addItem={this.addItem}/>
+        <TodoList 
+          toggleItem={this.toggleItem}
+          todoList={this.state.todos}
+          clearCompleted={this.clearCompleted}
+        />
       </div>
     );
   }
